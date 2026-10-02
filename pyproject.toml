@@ -1,0 +1,18 @@
+[project]
+name = "medical-chatbot"
+version = "0.1.0"
+description = "RAG-based Medical Chatbot using Flask, LangChain, Pinecone and Groq"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "flask",
+    "python-dotenv",
+    "langchain",
+    "langchain-community",
+    "langchain-pinecone",
+    "langchain-groq",
+    "langchain-huggingface",
+    "langchain-text-splitters",
+    "pinecone",
+    "pypdf",
+    "sentence-transformers",
+]
