@@ -5,21 +5,37 @@ A Retrieval-Augmented Generation (RAG) based medical chatbot that uses a medical
 Features
 
 -🔸 Medical question answering
+
 -🔸PDF-based medical knowledge base
+
 -🔸 Hugging Face embeddings
+
 -🔸 Pinecone vector database
+
 -🔸 LangChain-based RAG pipeline
+
 -🔸 Groq-powered language model
+
 -🔸 Flask web application
+
 -🔸 Simple and interactive chat interface
+
 -🔸 Multilingual RAG Engine: Seamlessly detects and responds to user queries in multiple languages including regional languages.
+
 -🔸 India-focused emergency guidance: Provides appropriate emergency guidance for serious symptoms and directs users to India's emergency number 112 when necessary
--🔸 Emergency-aware responses: Encourages users to seek immediate professional medical care for potentially serious symptoms
+
+-🔸 Emergency-aware responses: Encourages users to seek immediate professional medical care for potentially serious symptoms.
+
 -🔸 Three-dot thinking indicator: Displays a loading/thinking animation while the AI is generating a response
+
 -🔸 Clear Chat button: Allows users to clear the current conversation and start a fresh chat
+
 -🔸 Auto-scroll chat: Automatically scrolls to the latest message
+
 -🔸 Responsive interface: Designed to work across different screen sizes
+
 -🔸 Medical disclaimer: Clearly informs users that the chatbot provides general health information and is not a replacement for a qualified healthcare professional
+
 
 
 📌Project Structure
@@ -148,12 +164,21 @@ The chatbot is not a substitute for professional medical advice, diagnosis, or t
 
 
 📈 Future Improvements
+
 -🔹 Voice-based interaction
+
 -🔹 Speech-to-text and text-to-speech support
+
 -🔹 More regional Indian language support
+
 -🔹 Integration with verified medical information sources
+
 -🔹 Doctor/hospital discovery
+
 -🔹 Improved emergency assistance
+
 -🔹 Mobile application
+
 -🔹 User authentication and personalized health history
--🔹 Enhanced medical document retrieval and cita
+
+-🔹 Enhanced medical document retrieval and citation
