@@ -127,23 +127,33 @@ Open the address in a web browser to use the chatbot.
 
 📌Architecture
 
+
 Medical PDF
+
      ↓
 Document Loading
+
      ↓
 Text Splitting
+
      ↓
 Hugging Face Embeddings
+
      ↓
 Pinecone Vector Database
+
      ↓
 Retriever
+
      ↓
 Groq LLM
+
      ↓
 Flask Backend
+
      ↓
 Chat Interface
+
 
 📌Working
 
