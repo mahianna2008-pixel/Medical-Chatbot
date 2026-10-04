@@ -43,28 +43,39 @@ Features
 Medical-Chatbot/
 │
 ├── app.py
+
 ├── store_index.py
+
 ├── requirements.txt
+
 ├── pyproject.toml
+
 ├── README.md
+
 ├── .gitignore
+
 │
 ├── Data/
 │   └── medical PDF
 │
+
 ├── research/
 │   └── trials.ipynb
 │
+
 ├── src/
 │   ├── _init_.py
 │   ├── helper.py
 │   └── prompt.py
 │
+
 ├── templates/
 │   └── chat.html
 │
+
 └── static/
     └── style.css
+
 
 Requirements
 
