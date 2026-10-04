@@ -3,93 +3,432 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Medical AI Assistant</title>
-    
-    <!-- Bootstrap & FontAwesome -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+
+    <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <!-- External CSS Link -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"/>
-     
-
+    <!-- Your CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
 </head>
-<marquee><h1>MEDICAL CHATBOT</h1></marquee>
-<body style="background-color:rgb(235, 211, 230);">
+
+<body>
+
+    <!-- =========================
+         MAIN PAGE HEADER
+    ========================== -->
+    <header class="main-header">
+        <div class="header-icon">
+            <i class="fas fa-heartbeat"></i>
+        </div>
+
+        <div>
+            <h1>MEDICAL AI ASSISTANT</h1>
+            <p>AI-powered health information assistant</p>
+        </div>
+
+        <div class="header-status">
+            <span class="status-dot"></span>
+            Online
+        </div>
+    </header>
+
+
+    <!-- =========================
+         CHAT CONTAINER
+    ========================== -->
     <div class="container chat-container">
-        <div class="card">
-            
-            <!-- 1. Top Title Header (Doctor Image ke Upar Bold Text) -->
-            <div class="header-title-box">
-                <h5 class="main-title">Medical Assistant</h5>
-                <p class="sub-title">
-                    <i class="fas fa-heartbeat text-danger mr-1"></i>
-                    Always available for your health
-                </p>
+
+        <div class="card chat-card">
+
+            <!-- Assistant Header -->
+            <div class="card-header assistant-header">
+
+                <div class="assistant-profile">
+
+                    <div class="img_cont">
+                        <img
+                            src="https://img.freepik.com/free-photo/woman-doctor-wearing-lab-coat-with-stethoscope-isolated_1303-29791.jpg"
+                            class="user_img"
+                            alt="Medical Assistant">
+
+                        <span class="online_icon"></span>
+                    </div>
+
+                    <div class="assistant-info">
+                        <h5>Medical Assistant</h5>
+                        <p>
+                            <i class="fas fa-shield-alt"></i>
+                            Available to answer your health queries
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- Clear Chat -->
+                <button id="clearChat" class="clear-btn" title="Clear chat">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+
             </div>
 
-            <!-- 2. Doctor Image Avatar Section -->
-            <div class="card-header text-center">
-                <div class="img_cont">
-                    <img src="https://img.freepik.com/free-photo/woman-doctor-wearing-lab-coat-with-stethoscope-isolated_1303-29791.jpg" class="rounded-circle user_img" alt="Doctor Avatar">
-                    <span class="online_icon"></span>
-                </div>
+
+            <!-- =========================
+                 MEDICAL DISCLAIMER
+            ========================== -->
+            <div class="medical-notice">
+                <i class="fas fa-info-circle"></i>
+
+                <span>
+                    This assistant provides general health information
+                    and is not a substitute for a qualified medical professional.
+                </span>
             </div>
-            
-            <!-- 3. Chat Messages Area -->
+
+
+            <!-- =========================
+                 CHAT MESSAGES
+            ========================== -->
             <div id="messageFormeight" class="card-body msg_card_body">
-                <div class="d-flex justify-content-start mb-4">
-                    <div class="msg_cotainer">
-                        Hello! 👋 Main aapka AI Medical Assistant hu. Aap mujhse koi bhi health ya medical query pooch sakte hain!
-                        <span class="msg_time">Just now</span>
+
+                <!-- Initial Bot Message -->
+                <div class="message-row bot-row">
+
+                    <div class="msg-avatar">
+                        <i class="fas fa-user-md"></i>
                     </div>
+
+                    <div class="msg_cotainer">
+
+                        <div class="message-label">
+                            Medical Assistant
+                        </div>
+
+                        <div class="message-text">
+                            Hello! 👋 I'm your Medical AI Assistant.
+                            You can ask me health-related questions,
+                            and I'll provide information based on my
+                            available medical knowledge.
+                        </div>
+
+                        <span class="msg_time">
+                            Just now
+                        </span>
+
+                    </div>
+
                 </div>
+
             </div>
 
-            <!-- 4. Input Field Footer -->
-            <div class="card-footer">
+
+            <!-- =========================
+                 TYPING INDICATOR
+            ========================== -->
+            <div id="typingIndicator" class="typing-indicator">
+
+                <span>Assistant is thinking</span>
+
+                <span class="typing-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+
+            </div>
+
+
+            <!-- =========================
+                 INPUT AREA
+            ========================== -->
+            <div class="card-footer chat-footer">
+
                 <form id="messageArea" class="input-group">
-                    <input type="text" id="text" name="msg" placeholder="Type your health query..." autocomplete="off" class="form-control type_msg" required/>
+
+                    <input
+                        type="text"
+                        id="text"
+                        name="msg"
+                        placeholder="Type your health query..."
+                        autocomplete="off"
+                        class="form-control type_msg"
+                        required
+                    />
+
                     <div class="input-group-append">
-                        <button type="submit" id="send" class="input-group-text send_btn">
+
+                        <button
+                            type="submit"
+                            id="send"
+                            class="input-group-text send_btn"
+                            title="Send message">
+
                             <i class="fas fa-paper-plane"></i>
+
                         </button>
+
                     </div>
+
                 </form>
+
+                <div class="input-hint">
+                    <i class="fas fa-lock"></i>
+                    Ask a health question to get started
+                </div>
+
             </div>
 
         </div>
+
     </div>
 
-    <script>
-        $(document).ready(function() {
-            $("#messageArea").on("submit", function(event) {
-                const date = new Date();
-                const hour = String(date.getHours()).padStart(2, '0');
-                const minute = String(date.getMinutes()).padStart(2, '0');
-                const str_time = hour + ":" + minute;
-                var rawText = $("#text").val();
 
-                var userHtml = '<div class="d-flex justify-content-end mb-4"><div class="msg_cotainer_send">' + rawText + '<span class="msg_time_send">' + str_time + '</span></div></div>';
-                
-                $("#text").val("");
-                $("#messageFormeight").append(userHtml);
-                $("#messageFormeight").scrollTop($("#messageFormeight")[0].scrollHeight);
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+    <script>
+
+        $(document).ready(function () {
+
+            const chatBox = $("#messageFormeight");
+            const inputBox = $("#text");
+            const typing = $("#typingIndicator");
+
+
+            // Initially hide typing indicator
+            typing.hide();
+
+
+            // =========================
+            // SEND MESSAGE
+            // =========================
+
+            $("#messageArea").on("submit", function (event) {
+
+                event.preventDefault();
+
+                const rawText = inputBox.val().trim();
+
+                if (!rawText) {
+                    return;
+                }
+
+
+                // Current time
+                const date = new Date();
+
+                const hour = String(date.getHours()).padStart(2, "0");
+                const minute = String(date.getMinutes()).padStart(2, "0");
+
+                const str_time = hour + ":" + minute;
+
+
+                // =========================
+                // USER MESSAGE
+                // =========================
+
+                const userRow = $('<div class="message-row user-row"></div>');
+
+                const userBubble = $('<div class="msg_cotainer_send"></div>');
+
+                const userText = $('<div class="message-text"></div>')
+                    .text(rawText);
+
+                const userTime = $('<span class="msg_time_send"></span>')
+                    .text(str_time);
+
+                userBubble.append(userText);
+                userBubble.append(userTime);
+
+                userRow.append(userBubble);
+
+                chatBox.append(userRow);
+
+
+                // Clear input
+                inputBox.val("");
+
+                scrollToBottom();
+
+
+                // Show typing indicator
+                typing.fadeIn(150);
+
+                $("#send").prop("disabled", true);
+
+
+                // =========================
+                // SEND TO FLASK
+                // =========================
 
                 $.ajax({
-                    data: { msg: rawText },
+
+                    data: {
+                        msg: rawText
+                    },
+
                     type: "POST",
-                    url: "/get",
-                }).done(function(data) {
-                    var botHtml = '<div class="d-flex justify-content-start mb-4"><div class="msg_cotainer">' + data + '<span class="msg_time">' + str_time + '</span></div></div>';
-                    $("#messageFormeight").append(botHtml);
-                    $("#messageFormeight").scrollTop($("#messageFormeight")[0].scrollHeight);
+
+                    url: "/get"
+
+                })
+
+                .done(function (data) {
+
+                    typing.hide();
+
+
+                    // BOT MESSAGE
+
+                    const botRow =
+                        $('<div class="message-row bot-row"></div>');
+
+                    const botAvatar =
+                        $('<div class="msg-avatar"><i class="fas fa-user-md"></i></div>');
+
+                    const botBubble =
+                        $('<div class="msg_cotainer"></div>');
+
+                    const botLabel =
+                        $('<div class="message-label"></div>')
+                        .text("Medical Assistant");
+
+                    const botText =
+                        $('<div class="message-text"></div>')
+                        .text(data);
+
+                    const botTime =
+                        $('<span class="msg_time"></span>')
+                        .text(str_time);
+
+                    botBubble.append(botLabel);
+                    botBubble.append(botText);
+                    botBubble.append(botTime);
+
+                    botRow.append(botAvatar);
+                    botRow.append(botBubble);
+
+                    chatBox.append(botRow);
+
+                    scrollToBottom();
+
+                })
+
+                .fail(function () {
+
+                    typing.hide();
+
+                    const errorRow =
+                        $('<div class="message-row bot-row"></div>');
+
+                    const errorBubble =
+                        $('<div class="msg_cotainer error-message"></div>');
+
+                    errorBubble.text(
+                        "Sorry, I couldn't process your request right now. Please try again."
+                    );
+
+                    errorRow.append(errorBubble);
+
+                    chatBox.append(errorRow);
+
+                    scrollToBottom();
+
+                })
+
+                .always(function () {
+
+                    $("#send").prop("disabled", false);
+
+                    inputBox.focus();
+
                 });
-                event.preventDefault();
+
             });
+
+
+            // =========================
+            // CLEAR CHAT
+            // =========================
+
+            $("#clearChat").on("click", function () {
+
+                chatBox.html(`
+
+                    <div class="message-row bot-row">
+
+                        <div class="msg-avatar">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+
+                        <div class="msg_cotainer">
+
+                            <div class="message-label">
+                                Medical Assistant
+                            </div>
+
+                            <div class="message-text">
+                                Hello! 👋 I'm your Medical AI Assistant.
+                                How can I help you today?
+                            </div>
+
+                            <span class="msg_time">
+                                Just now
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                `);
+
+            });
+
+
+            // =========================
+            // ENTER KEY
+            // =========================
+
+            inputBox.on("keydown", function (event) {
+
+                if (event.key === "Enter" && !event.shiftKey) {
+
+                    event.preventDefault();
+
+                    $("#messageArea").submit();
+
+                }
+
+            });
+
+
+            // =========================
+            // AUTO SCROLL
+            // =========================
+
+            function scrollToBottom() {
+
+                chatBox.stop().animate({
+
+                    scrollTop: chatBox[0].scrollHeight
+
+                }, 300);
+
+            }
+
         });
+
     </script>
-    
+
 </body>
 </html>

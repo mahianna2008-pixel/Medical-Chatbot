@@ -64,6 +64,59 @@ rag_chain = (
     | llm
     | StrOutputParser()
 )
+# EMERGENCY DETECTION
+# ============================================================
+
+EMERGENCY_KEYWORDS = [
+    "severe chest pain",
+    "chest pain and difficulty breathing",
+    "difficulty breathing",
+    "cannot breathe",
+    "can't breathe",
+    "severe breathing problem",
+    "unconscious",
+    "not responding",
+    "seizure",
+    "stroke",
+    "severe bleeding",
+    "heavy bleeding",
+    "fainted and not recovering",
+    "saans nahi aa rahi",
+    "saans lene mein dikkat",
+    "seene mein bahut tez dard",
+    "seene me bahut tez dard",
+    "behosh",
+    "fit aa raha",
+    "bahut zyada khoon"
+]
+
+
+def is_emergency(message):
+    message = message.lower()
+
+    for keyword in EMERGENCY_KEYWORDS:
+        if keyword in message:
+            return True
+
+    return False
+
+
+# ============================================================
+# EMERGENCY RESPONSE
+# ============================================================
+
+EMERGENCY_RESPONSE = """
+🚨 <strong>Possible Medical Emergency</strong>
+
+The symptoms you described may require urgent medical attention.
+
+Please contact your local emergency service or go to the nearest emergency department immediately.
+
+Do not rely on this chatbot for emergency diagnosis or treatment.
+"""
+
+
+
 
 
 @app.route("/")
@@ -80,6 +133,9 @@ def chat():
         return "Please enter a question."
 
     print("Question:", msg)
+    if is_emergency(msg):
+        print("Emergency query detected")
+        return EMERGENCY_RESPONSE
 
     response = rag_chain.invoke(msg)
 
