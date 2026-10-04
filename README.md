@@ -12,6 +12,7 @@ Features
 - Groq-powered language model
 - Flask web application
 - Simple and interactive chat interface
+- Multilingual RAG Engine: Seamlessly detects and responds to user queries in multiple languages including regional languages.
 
 Project Structure
 
