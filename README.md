@@ -133,6 +133,6 @@ Working
 
 Disclaimer
 
-This project is intended for educational and informational purposes only.
+This project is intended for educational and informational purposes Only.
 
 The chatbot is not a substitute for professional medical advice, diagnosis, or treatment. Users should consult a qualified healthcare professional for medical concerns.
