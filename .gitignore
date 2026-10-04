@@ -7,7 +7,7 @@ __pycache__/
 *$py.class
 
 *.so
-
+research/trials.ipynb
 .Python
 build/
 develop-eggs/
