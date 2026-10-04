@@ -80,8 +80,11 @@ Medical-Chatbot/
 Requirements
 
 -🔹 Python 3.12.x
+
 -🔹 Pinecone account and API key
+
 -🔹 Groq API key
+
 -🔹 Internet connection
 
 Installation
